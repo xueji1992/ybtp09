@@ -1,0 +1,160 @@
+{
+	"Qudao": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.Analytical",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Category": "上期",
+								"D1": 4310.22,
+								"D2": 2300.00,
+								"D3": 5000.00,
+								"D4": 2100.00
+							},
+							{
+								"Category": "本期",
+								"D1": 4940.30,
+								"D2": 2380.00,
+								"D3": 5000.00,
+								"D4": 2240.00
+							}
+						]
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Categories",
+						"value": "{Category}"
+					}
+				],
+				"measures": [
+					{
+						"label": "外卖",
+						"value": "{D1}"
+					},
+					{
+						"label": "抖音",
+						"value": "{D2}"
+					},
+					{
+						"label": "大众点评",
+						"value": "{D3}"
+					},
+					{
+						"label": "其他",
+						"value": "{D4}"
+					}
+				]
+			}
+		}
+	},
+    "Spdl": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.Analytical",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Category": "上期",
+								"D1": 31000.22,
+								"D2": 30000.00,
+								"D3": 50000.00,
+								"D4": 21000.00
+							},
+							{
+								"Category": "本期",
+								"D1": 49000.30,
+								"D2": 23800.00,
+								"D3": 50000.00,
+								"D4": 22400.00
+							}
+						]
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Categories",
+						"value": "{Category}"
+					}
+				],
+				"measures": [
+					{
+						"label": "瓜子和花生",
+						"value": "{D1}"
+					},
+					{
+						"label": "栗子",
+						"value": "{D2}"
+					},
+					{
+						"label": "树坚果",
+						"value": "{D3}"
+					},
+					{
+						"label": "果脯",
+						"value": "{D4}"
+					}
+				]
+			}
+		}
+	}
+}

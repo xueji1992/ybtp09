@@ -1,0 +1,94 @@
+_schema-version: "3.2"
+ID: ybtp092
+description: 门店统计表
+version: 0.0.1
+modules:
+- name: ybtp092-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: ybtp092-destination-service
+    parameters:
+      content-target: true
+  - name: ybtp092-repo-host
+    parameters:
+      service-key:
+        name: ybtp092-repo-host-key
+  - name: ybtp092-uaa
+    parameters:
+      service-key:
+        name: ybtp092-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: ybtp092_html_repo_host
+          ServiceInstanceName: ybtp092-html5-srv
+          ServiceKeyName: ybtp092-repo-host-key
+          sap.cloud.service: ybtp092
+        - Authentication: OAuth2UserTokenExchange
+          Name: ybtp092_uaa
+          ServiceInstanceName: ybtp092-xsuaa-srv
+          ServiceKeyName: ybtp092-uaa-key
+          sap.cloud.service: ybtp092
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: ybtp092-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: ybtp092-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ybtp092.zip
+      name: ybtp092
+      target-path: resources/
+- name: ybtp092
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: ybtp092-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: ybtp092-destination-service
+    service-plan: lite
+- name: ybtp092-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: ybtp092-xsuaa-srv
+    service-plan: application
+- name: ybtp092-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: ybtp092-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

@@ -1,0 +1,231 @@
+<mvc:View
+		controllerName="ybtp092.controller.Worklist"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form"
+		xmlns:f="sap.f"
+        xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:layout="sap.ui.layout" 
+	    xmlns:w="sap.ui.integration.widgets"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+			<!-- DynamicPage Title -->
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<layout:HorizontalLayout>
+                        <fb:FilterBar id="filterBar" reset="onReset" search="onSearch"  useToolbar="false" showFilterConfiguration="false">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="FM_BUKRS" label="{i18n>FM_BUKRS}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    required="true"
+                                    forceSelection="false"
+                                    selectedKey="{formModal>/Bukrs}"
+                                    items="{
+                                        path: 'barModel>/Bukrss'
+                                    }">
+                                    <core:Item key="{barModel>Bukrs}" text="{barModel>Butxt}" />
+                                </Select>
+                            </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="FM_GJAHR" required="true" label="{i18n>FM_GJAHR}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker required="true" value="{formModal>/Gjahr}" displayFormat="yyyy" valueFormat="yyyy" change="handleChange"/>
+                            </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="FM_GUKRS" label="{i18n>FM_GUKRS}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker value="{formModal>/Gukrs}" displayFormat="MM/y" valueFormat="MM" change="handleChange"/>
+                            </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="FM_MONAT" label="{i18n>FM_MONAT}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input value="{formModal>/Monat}" />
+                            </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="FM_BUDAT" label="{i18n>FM_BUDAT}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <DateRangeSelection displayFormat="yyyy/MM/dd" value="{formModal>/Budat}" change="handleChange"/>
+                            </fb:control>
+                            </fb:FilterGroupItem>
+
+                        </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </layout:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+            <layout:VerticalLayout class="sapUiContentPadding">
+                <Table
+                    id="table"
+                    width="auto"
+                    items="{
+                        path: '/ycdv_btp09',
+                        sorter: {
+                            path: 'Zcatalog',
+                            descending: false
+                        }
+                    }"
+                    noDataText="{worklistView>/tableNoDataText}"
+                    busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    updateFinished=".onUpdateFinished">
+    
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title
+                                id="tableHeader"
+                                text="门店数量"
+                                level="H3"/>
+                            <ToolbarSpacer />
+                        </OverflowToolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column id="nameColumn">
+                            <Text text="" id="nameColumnTitle"/>
+                        </Column>
+                        <Column id="unitNumberColumn" >
+                            <Text text="年初数" />
+                        </Column>
+                        <Column >
+                            <Text text="1月" />
+                        </Column>
+                        <Column>
+                            <Text text="2月" />
+                        </Column>
+                        <Column >
+                            <Text text="3月" />
+                        </Column>
+                        <Column>
+                            <Text text="4月" />
+                        </Column>
+                        <Column >
+                            <Text text="5月" />
+                        </Column>
+                        <Column>
+                            <Text text="6月" />
+                        </Column>
+                        <Column >
+                            <Text text="7月" />
+                        </Column>
+                        <Column>
+                            <Text text="8月" />
+                        </Column>
+                        <Column >
+                            <Text text="9月" />
+                        </Column>
+                        <Column>
+                            <Text text="10月" />
+                        </Column>
+                        <Column >
+                            <Text text="11月" />
+                        </Column>
+                        <Column>
+                            <Text text="12月" />
+                        </Column>
+                        <Column>
+                            <Text text="期末数" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{CatalogDesc}"/>
+                                <Text text="{Nchymd}"/>
+                                <Text text="{Period1}"/>
+                                <Text text="{Period2}"/>
+                                <Text text="{Period3}"/>
+                                <Text text="{Period4}"/>
+                                <Text text="{Period5}"/>
+                                <Text text="{Period6}"/>
+                                <Text text="{Period7}"/>
+                                <Text text="{Period8}"/>
+                                <Text text="{Period9}"/>
+                                <Text text="{Period10}"/>
+                                <Text text="{Period11}"/>
+                                <Text text="{Period12}"/>
+                                <Text text="{Nmhymd}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <VBox class="sapUiSmallMargin">
+                    <form:SimpleForm id="SimpleFormDisplay354"
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        title="开店进展"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <form:content>
+                            <Label text="预算年末门店数量" />
+                            <Text id="nameText" text="100" />
+                            
+                            <Label text="开店进展" />
+                            <ProgressIndicator
+                                class="sapUiSmallMarginBottom"
+                                percentValue="56"
+                                displayValue="56/100"
+                                showValue="true"
+                                state="Success" />
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+
+                <Title
+					text="销售额占比（BY渠道）"
+					titleStyle="H3"
+					class="sapUiSmallMarginBottom sapUiSmallMarginTop sapUiSmallMarginBegin" />
+				<f:GridContainer>
+					<f:layout>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+					</f:layout>
+					<f:layoutS>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="0.5rem" />
+					</f:layoutS>
+					<w:Card manifest="{manifests>/Qudao}">
+						<w:layoutData>
+							<f:GridContainerItemLayoutData rows="5" columns="4" />
+						</w:layoutData>
+					</w:Card>
+				</f:GridContainer>
+  
+                <Title
+					text="销售额占比（BY商品大类）"
+					titleStyle="H3"
+					class="sapUiSmallMarginBottom sapUiSmallMarginTop sapUiSmallMarginBegin" />
+				<f:GridContainer>
+					<f:layout>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+					</f:layout>
+					<f:layoutS>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="0.5rem" />
+					</f:layoutS>
+					<w:Card manifest="{manifests>/Spdl}">
+						<w:layoutData>
+							<f:GridContainerItemLayoutData rows="5" columns="4" />
+						</w:layoutData>
+					</w:Card>
+				</f:GridContainer>
+  
+            </layout:VerticalLayout>
+        </f:content>
+        
+    </f:DynamicPage>
+</mvc:View>
