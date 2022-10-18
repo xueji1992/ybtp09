@@ -34,18 +34,195 @@
 					"json": {
 						"list": [
 							{
-								"Category": "上期",
-								"D1": 4310.22,
-								"D2": 2300.00,
-								"D3": 5000.00,
-								"D4": 2100.00
+								"Category": "1",
+								"D1": 10,
+								"D2": 20,
+								"D3": 30,
+								"D4": 40
 							},
 							{
-								"Category": "本期",
-								"D1": 4940.30,
-								"D2": 2380.00,
-								"D3": 5000.00,
-								"D4": 2240.00
+								"Category": "2",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "3",
+								"D1": 30,
+								"D2": 20,
+								"D3": 30,
+								"D4": 20
+							},
+							{
+								"Category": "4",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "5",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "6",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							}
+						]
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Categories",
+						"value": "{Category}"
+					}
+				],
+				"measures": [
+					{
+						"label": "外卖",
+						"value": "{D1}"
+					},
+					{
+						"label": "抖音",
+						"value": "{D2}"
+					},
+					{
+						"label": "大众点评",
+						"value": "{D3}"
+					},
+					{
+						"label": "其他",
+						"value": "{D4}"
+					}
+				]
+			}
+		}
+	},
+    "Qudao2": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.Analytical",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": false
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Category": "1",
+								"D1": 10,
+								"D2": 20,
+								"D3": 30,
+								"D4": 40
+							},
+							{
+								"Category": "2",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "3",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "4",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "5",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "6",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "7",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "8",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "9",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "10",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "11",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
+							},
+							{
+								"Category": "12",
+								"D1": 20,
+								"D2": 20,
+								"D3": 30,
+								"D4": 30
 							}
 						]
 					},
@@ -114,17 +291,17 @@
 						"list": [
 							{
 								"Category": "上期",
-								"D1": 31000.22,
-								"D2": 30000.00,
-								"D3": 50000.00,
-								"D4": 21000.00
+								"D1": 15,
+								"D2": 25,
+								"D3": 40,
+								"D4": 20
 							},
 							{
 								"Category": "本期",
-								"D1": 49000.30,
-								"D2": 23800.00,
-								"D3": 50000.00,
-								"D4": 22400.00
+								"D1": 10,
+								"D2": 50,
+								"D3": 20,
+								"D4": 20
 							}
 						]
 					},

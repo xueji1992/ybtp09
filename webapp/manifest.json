@@ -43,7 +43,12 @@
                     "action": "ybtp09",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://account",
+                    "indicatorDataSource": {
+                        "dataSource": "mainService",
+                        "path": "/YBTP09_SRV/ycdv_btp09/$count",
+                        "refresh": 0
+                    }
                 }
             }
         }

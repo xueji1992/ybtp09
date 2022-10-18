@@ -180,8 +180,8 @@
                             <Label text="开店进展" />
                             <ProgressIndicator
                                 class="sapUiSmallMarginBottom"
-                                percentValue="56"
-                                displayValue="56/100"
+                                percentValue="65"
+                                displayValue="65/100"
                                 showValue="true"
                                 state="Success" />
                         </form:content>
@@ -201,7 +201,26 @@
 					</f:layoutS>
 					<w:Card manifest="{manifests>/Qudao}">
 						<w:layoutData>
-							<f:GridContainerItemLayoutData rows="5" columns="4" />
+							<f:GridContainerItemLayoutData rows="5" columns="14" />
+						</w:layoutData>
+					</w:Card>
+				</f:GridContainer>
+  
+
+                <Title
+					text="销售额占比（BY渠道）"
+					titleStyle="H3"
+					class="sapUiSmallMarginBottom sapUiSmallMarginTop sapUiSmallMarginBegin" />
+				<f:GridContainer>
+					<f:layout>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+					</f:layout>
+					<f:layoutS>
+						<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="0.5rem" />
+					</f:layoutS>
+					<w:Card manifest="{manifests>/Qudao2}">
+						<w:layoutData>
+							<f:GridContainerItemLayoutData rows="5" columns="15" />
 						</w:layoutData>
 					</w:Card>
 				</f:GridContainer>
@@ -219,7 +238,7 @@
 					</f:layoutS>
 					<w:Card manifest="{manifests>/Spdl}">
 						<w:layoutData>
-							<f:GridContainerItemLayoutData rows="5" columns="4" />
+							<f:GridContainerItemLayoutData rows="5" columns="15" />
 						</w:layoutData>
 					</w:Card>
 				</f:GridContainer>
