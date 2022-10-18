@@ -81,6 +81,8 @@
                                 text="门店数量"
                                 level="H3"/>
                             <ToolbarSpacer />
+				
+					        <Button icon="sap-icon://excel-attachment" press="onExport"/>
                         </OverflowToolbar>
                     </headerToolbar>
 

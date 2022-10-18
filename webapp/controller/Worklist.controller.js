@@ -3,9 +3,13 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "../model/formatter",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+	'sap/ui/export/library',
+	'sap/ui/export/Spreadsheet'
+], function (BaseController, JSONModel, formatter, Filter, FilterOperator,exportLibrary, Spreadsheet) {
     "use strict";
+
+    var EdmType = exportLibrary.EdmType;
 
     return BaseController.extend("ybtp092.controller.Worklist", {
 
@@ -221,6 +225,104 @@ sap.ui.define([
               var appPath = appId.replaceAll(".", "/");
               var appModulePath = jQuery.sap.getModulePath(appPath);
               return appModulePath;
+          },
+
+          onExport: function() {
+              var aCols, oRowBinding, oSettings, oSheet, oTable;
+  
+              if (!this._oTable) {
+                  this._oTable = this.byId('table');
+              }
+  
+              oTable = this._oTable;
+              oRowBinding = oTable.getBinding('items');
+              aCols = this.createColumnConfig();
+  
+              oSettings = {
+                  workbook: {
+                      columns: aCols,
+                      hierarchyLevel: 'Level'
+                  },
+                  dataSource: oRowBinding,
+                  fileName: '门店统计表.xlsx',
+                  worker: false // We need to disable worker because we are using a MockServer as OData Service
+              };
+  
+              oSheet = new Spreadsheet(oSettings);
+              oSheet.build().finally(function() {
+                  oSheet.destroy();
+              });
+          },
+
+          createColumnConfig: function() {
+              var aCols = [];
+
+              aCols.push({
+                label: 'Catalog Desc',
+                type: EdmType.String,
+                property: 'CatalogDesc',
+                scale: 0
+            });
+            aCols.push({
+              label: '年初数',
+              type: EdmType.String,
+              property: 'Nchymd',
+              scale: 0
+          });
+          aCols.push({
+              label: '1月',
+              type: EdmType.Number,
+              property: 'Period1',
+              scale: 0
+          });
+          aCols.push({
+              label: '2月',
+              type: EdmType.Number,
+              property: 'Period2',
+              scale: 0
+          });
+          aCols.push({
+              label: '3月',
+              type: EdmType.Number,
+              property: 'Period3',
+              scale: 0
+          });
+  
+            //   aCols.push({
+            //       property: 'Firstname',
+            //       type: EdmType.String
+            //   });
+  
+            //   aCols.push({
+            //       property: 'Lastname',
+            //       type: EdmType.String
+            //   });
+  
+            //   aCols.push({
+            //       property: 'Birthdate',
+            //       type: EdmType.Date
+            //   });
+  
+            //   aCols.push({
+            //       property: 'Salary',
+            //       type: EdmType.Number,
+            //       scale: 2,
+            //       delimiter: true
+            //   });
+  
+            //   aCols.push({
+            //       property: 'Currency',
+            //       type: EdmType.String
+            //   });
+  
+            //   aCols.push({
+            //       property: 'Active',
+            //       type: EdmType.Boolean,
+            //       trueValue: 'YES',
+            //       falseValue: 'NO'
+            //   });
+  
+              return aCols;
           }
 
     });
